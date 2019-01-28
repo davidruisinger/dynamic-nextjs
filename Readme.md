@@ -49,7 +49,9 @@ On every page request the following will happen
 
 ## What can I configure 🤖
 
-Since this is just a sample project there areonly 2 ELements that you can use to fill your pages
+You can play around with it by modifiying the config prop defined in `./mockDB.json` (the json-server that is used in dev mode is running with `--watch` so you do not need to restart the server. Just reload the page in your browser to see the changes).
+
+Since this is just a sample project there areonly 2 ELements that you can use to fill your pages.
 
 ### Markdown
 
