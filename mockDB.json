@@ -1,0 +1,260 @@
+{
+  "config": {
+    "url_product_base": "http://localhost:3001/products",
+    "url_template_base_web": "http://localhost:3001/templates",
+    "url_template_base_ios": "http://localhost:3001/templates",
+    "url_template_base_android": "http://localhost:3001/templates"
+  },
+  "templates": [
+    {
+      "id": "1a2b3c",
+      "meta": {
+        "app_name": "@flavordaave",
+        "app_logo": "/static/img/logo.png"
+      },
+      "pages": [
+        {
+          "href": "/",
+          "label": "Home",
+          "content": [
+            {
+              "type": "Markdown",
+              "content": "# Dynamic page rendering with NEXT.js\n\n## Why? 🤔\n\nI used this approach to implement a whitelabel solution at my current company (see demo [here](https://whitelabel.dev.dongxii.com)) where customers could create their own set of pages, dynamically fill theme with content and serve them through a SSR react app.\n\nInstead of manually creating new pages by adding a `mypagexyz.js` file to NEXT.js's `/pages` directory, you define your pages in a remote JSON file.\n\n## Quickstart 🚀\n\n### 1. Install dependencies\n\n```\nyarn\n# or\nnpm install\n```\n\n### 2. Start dev server\n\n```\nyarn dev\n# or\nnpm run dev\n```\n\nThis will spin up the demo project on [http://localhost:3000](http://localhost:3000) using [json-serve](https://github.com/typicode/json-server) to provide a basic REST API.\n\n## How does it work? 🧙🏻‍♀️\n\nAs mentioned above, instead of having a dedicated JS file for every page, this app only requires a JSON config where you can define your pages. The path to the config is provided as an env variable (see `./dev.env`).\n\nAfter starting the dev server you can have a look at the `/mockDB.json` file where all the API routes are defined.\nThe interesting part ist the `config` part which contains a `pages` property where you manage the pages that should be availabel on your site. The pages property is an array of page objects with the following structure:\n\n```\n{\n \"href\": \"/\", // Deinfes the pathe the page should be available at\n \"label\": \"Home\", // The name that shold ne used for the navbar and page title\n \"content\": [] // An array of supported Layout Elements\n},\n```\n\nOn every page request the following will happen\n\n1. The custom Express.js server redirects all requests to the `/src/client/pages/_dynamic.tsx` page.\n2. This page will check against the config wether there is a page defined for the specific URL\n3. If there is a page defined it will redner the elements defined in the `content` property of the page config\n\n## What can I configure 🤖\n\nSince this is just a sample project there areonly 2 ELements that you can use to fill your pages\n\n### Markdown\n\n```\n{\n \"type\": \"Markdown\",\n \"content\": \"# This is a headline\"\n}\n```\n\n### ProductList\n\n**Note** This component will fetch some content from another API. This is still happening on the server side so SSR is still completely suported.\n\n```\n{\n \"type\": \"ProductList\",\n \"content\": [\"1\", \"2\", \"3\"], // List of productId that are available under the /products route\n}\n```\n\n## Coming up next 🤗\n\nEven though this is just a sample project to demonstrate the basic concept of how dynamic page rendering with NEXT.js can be achieved, I'm planning to add a few more things to it to illustrate a few more concepts I used when building up the whitelabel solution mentioned in the beginning.\n\n| Feature                      | Status |\n| ------------------------------------------------- | ------ |\n| Content details pages               | -   |\n| Dynamic configuration og the navbar items     | -   |\n| Support for remote markdown in Markdown component | -   |\n\nIf you have more ideas of what definately should go in here, let me know!\n\n## Still missing 😬\n\n- Unit tests for UI components\n- Some basic end-to-end tests\n\n## Final words on project structure 🤓\n\nThe client side of this project is basically split up into 3 parts.\n\n1. Redux services (`./src/client/services`)\n2. Simple UI components (`./src/client/components`)\n3. Rendering logig (`./src/client/pages`)\n\n(sounds like the good ols MVC pattern 🙊)\n\nI'm always trying to keep them as independent as possible from each other so that I can re-use them in a variety of apps I(usually 1. and 2. are either git submodules or npm dependencies I can plug into multiple projects).\n\nMy Redux services are a 1to1 representation of all the micros-service I have on my backend. So if there is e.g. a micro service for authentication, I have a dedicated Redux service on the client for it.\n\nUsing this structure allows me to reduce the time I have to invest in maintaining all my clients.\nIf there is e.g. a new backend service for commenting stuff I'l add a new redux service for it and can start using it on either my react-based web app or my react-native-based mobile apps."
+            }
+          ]
+        },
+        {
+          "href": "/animals",
+          "label": "Animals",
+          "content": [
+            {
+              "type": "Markdown",
+              "content": "#My favorite animals"
+            },
+            {
+              "type": "ProductList",
+              "content": ["1", "2", "3", "4", "5", "6", "7", "8"]
+            }
+          ]
+        },
+        {
+          "href": "/about",
+          "label": "About",
+          "content": [
+            {
+              "type": "Markdown",
+              "content": "#This place needs some content...  \n\n[]()"
+            }
+          ]
+        }
+      ],
+      "variables": {
+        "color_canvas_ground": "#ffffff",
+        "color_canvas_first": "#efefef",
+        "color_canvas_second": "#f1ebe3",
+        "color_canvas_third": "#dab9a5",
+
+        "color_nav_bar_item": "#ffffff",
+        "color_nav_bar_item_active": "#2f464f",
+
+        "color_text_default": "#2f464f",
+        "color_text_highlight": "#d8833d",
+        "color_text_semi": "#9b9b9b",
+
+        "color_action_default": "#9b9b9b",
+        "color_action_primary": "#4a90e2",
+        "color_action_secondary": "#ff9840",
+        "color_action_label": "#ffffff",
+
+        "color_success": "#009933",
+        "color_danger": "#cc0000"
+      }
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "shop": "1a2b3c",
+      "name_en": "Dog - Puppy",
+      "desc_en": "",
+      "images": [
+        {
+          "url": "https://picsum.photos/800?image=1062"
+        },
+        {
+          "url": "https://picsum.photos/800?image=1025"
+        },
+        {
+          "url": "https://picsum.photos/800?image=837"
+        }
+      ],
+      "price_eur_regular": 9900,
+      "price_eur_discounted": 8900,
+      "variations": [
+        {
+          "name": "Puppy",
+          "id": "1"
+        },
+        {
+          "name": "Big",
+          "id": "2"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "shop": "1a2b3c",
+      "name_en": "Dog - Big",
+      "desc_en": "",
+      "images": [
+        {
+          "url": "https://picsum.photos/800?image=659"
+        },
+        {
+          "url": "https://picsum.photos/800?image=169"
+        },
+        {
+          "url": "https://picsum.photos/800?image=237"
+        }
+      ],
+      "price_eur_regular": 14999,
+      "price_eur_discounted": 14999,
+      "variations": [
+        {
+          "name": "Big",
+          "id": "2"
+        },
+        {
+          "name": "Puppy",
+          "id": "1"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "shop": "1a2b3c",
+      "name_en": "Tiger",
+      "desc_en": "",
+      "images": [
+        {
+          "url": "https://picsum.photos/800?image=1074"
+        },
+        {
+          "url": "https://picsum.photos/800?image=593"
+        }
+      ],
+      "price_eur_regular": 99900,
+      "price_eur_discounted": 99900,
+      "variations": [
+        {
+          "name": "",
+          "id": "3"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "shop": "1a2b3c",
+      "name_en": "Bird",
+      "desc_en": "",
+      "images": [
+        {
+          "url": "https://picsum.photos/800?image=1024"
+        },
+        {
+          "url": "https://picsum.photos/800?image=611"
+        }
+      ],
+      "price_eur_regular": 1999,
+      "price_eur_discounted": 1499,
+      "variations": [
+        {
+          "name": "",
+          "id": "4"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "shop": "1a2b3c",
+      "name_en": "Bear",
+      "desc_en": "",
+      "images": [
+        {
+          "url": "https://picsum.photos/800?image=1020"
+        },
+        {
+          "url": "https://picsum.photos/800?image=433"
+        }
+      ],
+      "price_eur_regular": 119999,
+      "price_eur_discounted": 119999,
+      "variations": [
+        {
+          "name": "",
+          "id": "5"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "shop": "1a2b3c",
+      "name_en": "Wulf",
+      "desc_en": "",
+      "images": [
+        {
+          "url": "https://picsum.photos/800?image=718"
+        },
+        {
+          "url": "https://picsum.photos/800?image=582"
+        }
+      ],
+      "price_eur_regular": 49999,
+      "price_eur_discounted": 44999,
+      "variations": [
+        {
+          "name": "",
+          "id": "6"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "shop": "1a2b3c",
+      "name_en": "Horse",
+      "desc_en": "",
+      "images": [
+        {
+          "url": "https://picsum.photos/800?image=584"
+        }
+      ],
+      "price_eur_regular": 59999,
+      "price_eur_discounted": 59999,
+      "variations": [
+        {
+          "name": "",
+          "id": "7"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "shop": "1a2b3c",
+      "name_en": "Leopard",
+      "desc_en": "",
+      "images": [
+        {
+          "url": "https://picsum.photos/800?image=219"
+        }
+      ],
+      "price_eur_regular": 149999,
+      "price_eur_discounted": 149999,
+      "variations": [
+        {
+          "name": "",
+          "id": "8"
+        }
+      ]
+    }
+  ]
+}

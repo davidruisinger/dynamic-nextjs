@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`product service reducer initial state should match the snapshot 1`] = `
+Object {
+  "error": null,
+  "isFetching": false,
+  "products": Array [],
+}
+`;
