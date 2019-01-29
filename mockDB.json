@@ -29,7 +29,7 @@
           "content": [
             {
               "type": "Markdown",
-              "content": "#My favorite animals"
+              "content": "# My favorite animals"
             },
             {
               "type": "ProductList",
