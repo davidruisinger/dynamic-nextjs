@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductPrice /> matches the snapshot 1`] = `
+.c0 {
+  margin: 10px;
+  color: #d8833d;
+}
+
+<span>
+  <span
+    className="c0"
+  >
+    € 1
+  </span>
+</span>
+`;
+
+exports[`<ProductPrice /> matches the snapshot 2`] = `
+.c0 {
+  color: #9b9b9b;
+  -webkit-text-decoration: line-through #2f464f;
+  text-decoration: line-through #2f464f;
+}
+
+.c1 {
+  margin: 10px;
+  color: #d8833d;
+}
+
+<span>
+  <span
+    className="c0"
+  >
+    € 1
+  </span>
+   
+  <span
+    className="c1"
+  >
+    € 0.9
+  </span>
+</span>
+`;

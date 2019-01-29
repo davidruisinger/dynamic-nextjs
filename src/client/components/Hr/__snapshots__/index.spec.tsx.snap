@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Hr /> works 1`] = `
+.c0 {
+  border: 0;
+  background-color: #efefef;
+  height: 1px;
+}
+
+<hr
+  className="c0"
+/>
+`;
