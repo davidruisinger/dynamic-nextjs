@@ -1,9 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components'
-import { ThemedComponent } from 'ComponentTypes'
+import styled from '../_utils/styledComponents'
 import Container from '../Container'
 
-const Wrapper = styled.header<ThemedComponent>`
+const Wrapper = styled.header`
   box-sizing: border-box;
   position: sticky;
   top: 0;

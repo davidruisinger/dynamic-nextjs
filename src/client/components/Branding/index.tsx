@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components'
 import { withTheme } from 'styled-components'
-import { ThemedComponent } from 'ComponentTypes'
+import styled, { Theme } from '../_utils/styledComponents'
 import { NavLink } from '../Menu'
 import Link from '../Link'
 import Image from '../Image'
@@ -11,7 +10,7 @@ interface Props {
   link: NavLink
 }
 
-const Wrapper = styled.div<ThemedComponent>`
+const Wrapper = styled.div`
   height: 80px;
   ${media.md`
     height: 100px;
@@ -32,10 +31,11 @@ const Wrapper = styled.div<ThemedComponent>`
   }
 `
 
-const Branding: FunctionComponent<ThemedComponent & Props> = ({
-  link,
-  theme,
-}) => (
+const Branding: FunctionComponent<
+  Props & {
+    theme: Theme
+  }
+> = ({ link, theme }) => (
   <Wrapper>
     <Link href={link.href} hrefAs={link.as}>
       {theme.appLogo ? (

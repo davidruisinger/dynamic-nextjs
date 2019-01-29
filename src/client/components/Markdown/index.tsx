@@ -1,13 +1,12 @@
 import React, { FunctionComponent } from 'react'
 import ReactMarkdown from 'react-markdown'
-import styled from 'styled-components'
-import { ThemedComponent } from 'ComponentTypes'
+import styled from '../_utils/styledComponents'
 
 interface Props {
   content: string
 }
 
-const Wrapper = styled.div<ThemedComponent>`
+const Wrapper = styled.div`
   pre {
     border: 1px solid ${props => props.theme.color_canvas_second};
   }

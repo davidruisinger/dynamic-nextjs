@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components'
 import _get from 'lodash.get'
-import { ThemedComponent } from 'ComponentTypes'
+import styled from '../_utils/styledComponents'
 import AspectRatio from '../AspectRatio'
 import Image from '../Image'
 import ProductPrice from '../ProductPrice'
@@ -11,7 +10,7 @@ interface Props {
   product: Product
 }
 
-const Wrapper = styled.div<ThemedComponent>`
+const Wrapper = styled.div`
   width: 100%;
   background-color: ${props => props.theme.color_canvas_first};
   padding: 0.5em;

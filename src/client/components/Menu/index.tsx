@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components'
+import styled from '../_utils/styledComponents'
 import FlexBox from '../FlexBox'
 import Link from '../Link'
 

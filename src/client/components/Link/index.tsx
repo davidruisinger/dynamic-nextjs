@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components'
 import NextLink from 'next/link'
-import { ThemedComponent } from 'ComponentTypes'
+import styled from '../_utils/styledComponents'
 
 interface Props {
   href: string
@@ -9,7 +8,7 @@ interface Props {
   className?: string
 }
 
-const A = styled.a<ThemedComponent>`
+const A = styled.a`
   position: relative;
   cursor: pointer;
   color: ${props => props.theme.color_action_primary};

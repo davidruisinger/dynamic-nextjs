@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components'
-import { ThemedComponent } from 'ComponentTypes'
+import styled from '../_utils/styledComponents'
 import { Product } from '../../services/product/types'
 
 interface Props {
@@ -9,12 +8,13 @@ interface Props {
 
 const toCurrencyString = (price: number) => `€ ${price / 100}`
 
-const OriginalPrice = styled.span<ThemedComponent>`
+const OriginalPrice = styled.span`
   color: ${props => props.theme.color_text_semi};
   text-decoration: line-through ${props => props.theme.color_text_default};
 `
 
-const SellingPrice = styled.span<ThemedComponent>`
+const SellingPrice = styled.span`
+  margin: 10px;
   color: ${props => props.theme.color_text_highlight};
 `
 

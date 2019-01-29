@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '../_utils/styledComponents'
 
 interface Props {
   width?: string

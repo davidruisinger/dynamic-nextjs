@@ -1,7 +1,6 @@
-import styled from 'styled-components'
-import { ThemedComponent } from 'ComponentTypes'
+import styled from '../_utils/styledComponents'
 
-interface Props extends ThemedComponent {
+interface Props {
   alignSelf?:
     | 'auto'
     | 'flex-start'

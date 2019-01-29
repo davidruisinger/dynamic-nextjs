@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components'
 import Head from 'next/head'
-
+import styled from '../_utils/styledComponents'
 import Branding from '../Branding'
 import Container from '../Container'
 import FlexBox from '../FlexBox'
